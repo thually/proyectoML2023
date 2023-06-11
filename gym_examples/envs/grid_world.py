@@ -1,7 +1,8 @@
-import gym
-from gym import spaces
-import pygame
 import numpy as np
+import pygame
+
+import gymnasium as gym
+from gymnasium import spaces
 
 
 class GridWorldEnv(gym.Env):
@@ -12,7 +13,7 @@ class GridWorldEnv(gym.Env):
         self.window_size = 512  # The size of the PyGame window
 
         # Observations are dictionaries with the agent's and the target's location.
-        # Each location is encoded as an element of {0, ..., `size`}^2, i.e. MultiDiscrete([size, size]).
+        # Each location is encoded as an element of {0, ..., `size`-1}^2, i.e. MultiDiscrete([size, size]).
         self.observation_space = spaces.Dict(
             {
                 "agent": spaces.Box(0, size - 1, shape=(2,), dtype=int),
