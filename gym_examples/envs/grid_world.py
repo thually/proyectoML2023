@@ -67,8 +67,9 @@ class GridWorldEnv(gym.Env):
         self._agent_location = self.np_random.integers(0, self.size, size=2, dtype=int)
 
         # We will sample the target's location randomly until it does not coincide with the agent's location
+        # or until it is not on the left or right border of the grid
         self._target_location = self._agent_location
-        while np.array_equal(self._target_location, self._agent_location):
+        while np.array_equal(self._target_location, self._agent_location) or self._target_location[0] in [0, self.size-1]:
             self._target_location = self.np_random.integers(
                 0, self.size, size=2, dtype=int
             )
