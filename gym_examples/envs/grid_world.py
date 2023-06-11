@@ -117,16 +117,7 @@ class GridWorldEnv(gym.Env):
             self.window_size / self.size
         )  # The size of a single grid square in pixels
 
-        # First we draw the target
-        pygame.draw.rect(
-            canvas,
-            (255, 0, 0),
-            pygame.Rect(
-                pix_square_size * self._target_location,
-                (pix_square_size, pix_square_size),
-            ),
-        )
-
+        # First, we draw the green goal zone
         pygame.draw.rect(
             canvas,
             (0, 255, 0),
@@ -136,6 +127,15 @@ class GridWorldEnv(gym.Env):
             ),
         )
 
+        # we draw the target
+        pygame.draw.rect(
+            canvas,
+            (255, 0, 0),
+            pygame.Rect(
+                pix_square_size * self._target_location,
+                (pix_square_size, pix_square_size),
+            ),
+        )
         # Now we draw the agent
         pygame.draw.circle(
             canvas,
