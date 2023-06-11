@@ -150,7 +150,7 @@ class GridWorldEnv(gym.Env):
                 canvas,
                 0,
                 (0, pix_square_size * x),
-                (self.window_size, pix_square_size * x),
+                (self.window_size - pix_square_size, pix_square_size * x),
                 width=3,
             )
             pygame.draw.line(
