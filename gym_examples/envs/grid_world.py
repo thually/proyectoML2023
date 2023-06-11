@@ -145,6 +145,20 @@ class GridWorldEnv(gym.Env):
         )
 
         # Finally, add some gridlines
+        pygame.draw.line(
+            canvas,
+            0,
+            (0, 0),
+            (self.window_size, 0),
+            width=3,
+        )
+        pygame.draw.line(
+            canvas,
+            0,
+            (0, pix_square_size * self.size),
+            (self.window_size, pix_square_size * self.size),
+            width=3,
+        )
         for x in range(self.size + 1):
             pygame.draw.line(
                 canvas,
