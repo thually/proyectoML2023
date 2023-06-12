@@ -86,11 +86,32 @@ class GridWorldEnv(gym.Env):
         # Map the action (element of {0,1,2,3}) to the direction we walk in
         direction = self._action_to_direction[action]
         # We use `np.clip` to make sure we don't leave the grid
-        self._agent_location = np.clip(
-            self._agent_location + direction, 0, self.size - 1
-        )
+        if np.array_equal(self._agent_location + direction, self._target_location):
+            # If the agent would walk into the target, we push the target in the same direction
+            # and move the agent, if possible.
+            # If the target would leave the grid, we don't the target nor the agent.
+
+            clipped_target_location = np.clip(
+                self._target_location + direction, 0, self.size - 1
+            )
+
+            if not np.array_equal(self._target_location, clipped_target_location):
+
+
+                self._target_location = clipped_target_location
+                self._agent_location = np.clip(
+                    self._agent_location + direction, 0, self.size - 1
+                )
+
+        else:
+            # Otherwise, we move the agent
+            self._agent_location = np.clip(
+                self._agent_location + direction, 0, self.size - 1
+            )
         # An episode is done iff the agent has reached the target
-        terminated = np.array_equal(self._agent_location, self._target_location)
+        terminated = self._target_location[0] == self.size - 1
+        # An episode is truncated iff the agent has reached the left border of the grid
+        truncated = self._target_location[0] == 0
         reward = 1 if terminated else 0  # Binary sparse rewards
         observation = self._get_obs()
         info = self._get_info()
@@ -98,7 +119,7 @@ class GridWorldEnv(gym.Env):
         if self.render_mode == "human":
             self._render_frame()
 
-        return observation, reward, terminated, False, info
+        return observation, reward, terminated, truncated, info
 
     def render(self):
         if self.render_mode == "rgb_array":
