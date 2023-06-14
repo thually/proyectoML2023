@@ -83,6 +83,9 @@ class GridWorldEnv(gym.Env):
         return observation, info
 
     def step(self, action):
+        # An episode is done iff the agent has reached the target
+        terminated = self._target_location[0] == self.size - 1
+        
         # Map the action (element of {0,1,2,3}) to the direction we walk in
         direction = self._action_to_direction[action]
         # We use `np.clip` to make sure we don't leave the grid
@@ -108,8 +111,6 @@ class GridWorldEnv(gym.Env):
             self._agent_location = np.clip(
                 self._agent_location + direction, 0, self.size - 1
             )
-        # An episode is done iff the agent has reached the target
-        terminated = self._target_location[0] == self.size - 1
         # An episode is truncated iff the agent has reached the left border of the grid
         truncated = self._target_location[0] == 0
         reward = 1 if terminated else 0  # Binary sparse rewards
