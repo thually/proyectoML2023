@@ -8,9 +8,11 @@ from gymnasium import spaces
 class GridWorldRandEnv(gym.Env):
     metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
 
-    def __init__(self, render_mode=None, size=5):
+    def __init__(self, render_mode=None, size=5, step_limit=None):
         self.size = size  # The size of the square grid
-        self.step_limit = size # steps before target changes position
+        # steps before target changes position
+        if step_limit is None: self.step_limit = size
+        else: self.step_limit = step_limit
         self.window_size = 512  # The size of the PyGame window
 
         # Observations are dictionaries with the agent's and the target's location.
