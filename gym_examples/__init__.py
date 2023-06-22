@@ -13,7 +13,7 @@ register(
 )
 
 register(
-     id="gym_examples/GridWorldRandom-v1",
-     entry_point="gym_examples.envs:GridWorldRandEnv_v1",
+     id="gym_examples/GridWorldRandom2-v0",
+     entry_point="gym_examples.envs:GridWorldRandEnv2",
      max_episode_steps=300,
 )
