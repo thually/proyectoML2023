@@ -5,3 +5,9 @@ register(
      entry_point="gym_examples.envs:GridWorldEnv",
      max_episode_steps=300,
 )
+
+register(
+     id="gym_examples/GridWorldRandom-v0",
+     entry_point="gym_examples.envs:GridWorldRandEnv",
+     max_episode_steps=300,
+)
