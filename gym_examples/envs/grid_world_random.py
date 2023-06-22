@@ -91,6 +91,15 @@ class GridWorldRandEnv(gym.Env):
     def step(self, action):
         # An episode is done iff the agent has reached the target
         terminated = self._target_location[0] == self.size - 1
+
+        # if self.step_limit == 0 change target location
+        if self.step_limit == 0:
+            self.step_limit = self.size
+            self._target_location = self._agent_location
+            while np.array_equal(self._target_location, self._agent_location) or self._target_location[0] in [0, self.size-1]:
+                self._target_location = self.np_random.integers(
+                    0, self.size, size=2, dtype=int
+            )
         
         # Map the action (element of {0,1,2,3,4}) to the direction we walk in
         direction = self._action_to_direction[action]
@@ -120,13 +129,6 @@ class GridWorldRandEnv(gym.Env):
 
         # reduce step limit
         self.step_limit -= 1
-        if self.step_limit == 0:
-            self.step_limit = self.size
-            self._target_location = self._agent_location
-            while np.array_equal(self._target_location, self._agent_location) or self._target_location[0] in [0, self.size-1]:
-                self._target_location = self.np_random.integers(
-                    0, self.size, size=2, dtype=int
-            )
 
 
         # An episode is truncated iff the agent has reached the left border of the grid
