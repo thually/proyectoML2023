@@ -137,7 +137,7 @@ class GridWorldRandEnv_v1(gym.Env):
         # A more complicated reward function
         if terminated:
             # If target is in goal, we give a reward of 10
-            reward = 10
+            reward = 30
         elif action == 4:
             # If the agent stays, we give a reward of -1
             reward = -1
