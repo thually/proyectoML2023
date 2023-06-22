@@ -21,8 +21,8 @@ class GridWorldRandEnv(gym.Env):
             }
         )
 
-        # We have 4 actions, corresponding to "right", "up", "left", "down", "right"
-        self.action_space = spaces.Discrete(4)
+        # We have 4 actions, corresponding to "right", "up", "left", "down", "right", "stay"
+        self.action_space = spaces.Discrete(5)
 
         """
         The following dictionary maps abstract actions from `self.action_space` to 
@@ -34,6 +34,7 @@ class GridWorldRandEnv(gym.Env):
             1: np.array([0, 1]),
             2: np.array([-1, 0]),
             3: np.array([0, -1]),
+            4: np.array([0, 0]),
         }
 
         assert render_mode is None or render_mode in self.metadata["render_modes"]
@@ -86,7 +87,7 @@ class GridWorldRandEnv(gym.Env):
         # An episode is done iff the agent has reached the target
         terminated = self._target_location[0] == self.size - 1
         
-        # Map the action (element of {0,1,2,3}) to the direction we walk in
+        # Map the action (element of {0,1,2,3,4}) to the direction we walk in
         direction = self._action_to_direction[action]
         # We use `np.clip` to make sure we don't leave the grid
         if np.array_equal(self._agent_location + direction, self._target_location):
@@ -140,10 +141,10 @@ class GridWorldRandEnv(gym.Env):
             self.window_size / self.size
         )  # The size of a single grid square in pixels
 
-        # First, we draw the green goal zone
+        # First, we draw the orange goal zone
         pygame.draw.rect(
             canvas,
-            (0, 255, 0),
+            (255, 165, 0),
             pygame.Rect(
                 (pix_square_size * (self.size-1), 0),
                 (pix_square_size, pix_square_size*self.size),
@@ -153,7 +154,7 @@ class GridWorldRandEnv(gym.Env):
         # we draw the target
         pygame.draw.rect(
             canvas,
-            (255, 0, 0),
+            (238, 130, 238),
             pygame.Rect(
                 pix_square_size * self._target_location,
                 (pix_square_size, pix_square_size),
@@ -162,7 +163,7 @@ class GridWorldRandEnv(gym.Env):
         # Now we draw the agent
         pygame.draw.circle(
             canvas,
-            (0, 0, 255),
+            (64, 224, 208),
             (self._agent_location + 0.5) * pix_square_size,
             pix_square_size / 3,
         )
