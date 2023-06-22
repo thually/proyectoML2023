@@ -10,6 +10,7 @@ class GridWorldRandEnv(gym.Env):
 
     def __init__(self, render_mode=None, size=5):
         self.size = size  # The size of the square grid
+        self.step_limit = size # steps before target changes position
         self.window_size = 512  # The size of the PyGame window
 
         # Observations are dictionaries with the agent's and the target's location.
@@ -64,6 +65,8 @@ class GridWorldRandEnv(gym.Env):
         # We need the following line to seed self.np_random
         super().reset(seed=seed)
 
+        self.step_limit = self.size # steps before target changes position
+
         # Choose the agent's location uniformly at random
         self._agent_location = self.np_random.integers(0, self.size, size=2, dtype=int)
 
@@ -112,6 +115,18 @@ class GridWorldRandEnv(gym.Env):
             self._agent_location = np.clip(
                 self._agent_location + direction, 0, self.size - 1
             )
+
+        # reduce step limit
+        self.step_limit -= 1
+        if self.step_limit == 0:
+            self.step_limit = self.size
+            self._target_location = self._agent_location
+            while np.array_equal(self._target_location, self._agent_location) or self._target_location[0] in [0, self.size-1]:
+                self._target_location = self.np_random.integers(
+                    0, self.size, size=2, dtype=int
+            )
+
+
         # An episode is truncated iff the agent has reached the left border of the grid
         truncated = self._target_location[0] == 0
         reward = 1 if terminated else 0  # Binary sparse rewards
