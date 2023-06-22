@@ -134,19 +134,18 @@ class GridWorldRandEnv2(gym.Env):
         # An episode is truncated iff the agent has reached the left border of the grid
         truncated = self._target_location[0] == 0
 
-        """# A more complicated reward function
         if terminated:
             # If target is in goal, we give a reward of 10
-            reward = 30
+            reward = 100
         elif action == 4:
             # If the agent stays, we give a reward of -1
             reward = -1
         else:
             # if the agent moves, we give a reward of -2
-            reward = -2"""
+            reward = -2
         
         # A simpler reward function
-        reward = 1 if terminated else 0
+        # reward = 1 if terminated else 0
 
         observation = self._get_obs()
         info = self._get_info()
