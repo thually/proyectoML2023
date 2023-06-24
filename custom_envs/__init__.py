@@ -1,8 +1,8 @@
 from gymnasium.envs.registration import register
 
 register(
-     id="custom_envs/PushBoxBase",
-     entry_point="custom_envs.envs:PushBoxBaseEnv",
+     id="custom_envs/PushBox",
+     entry_point="custom_envs.envs:PushBoxEnv",
      max_episode_steps=300,
 )
 
