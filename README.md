@@ -2,7 +2,7 @@ Este repositorio contiene todos los ambientes construidos y referenciados en el 
 
 Los ambientes construidos son:
 
-- PushBoxBaseEnv: Es el ambiente más sencillo y sobre el cuál se basan los demás. Sus características incluyen:
+- PushBoxEnv: Es el ambiente más sencillo y sobre el cuál se basan los demás. Sus características incluyen:
 
     1. En su estado inicial se dispone un *agente* y una caja o *target* de manera aleatoria.
     2. El agente tiene cuatro posibles acciones, desplazarse hacia arriba, abajo, izquierda y derecha.
@@ -13,4 +13,4 @@ Los ambientes construidos son:
 
 - PushBoxRandEnv: Este ambiente tiene las mismas características que `PushBoxBaseEnv` exceptuando por la característica 4. En este caso el ambiente cambia la caja de forma aleatoria cada cierta cantidad de pasos (definida por el tamaño del ambiente). Adicionalmente añade a la característica 2 una quinta acción: permanecer en la posición actual.
 
-- PushBoxRandEnv2: Comparte las características de `PushBoxRandEnv` pero modifica la política del agente, penalizando cada vez que se mueve o se queda quieto, pero recompensando aún más cada vez que se mueve.
+- PushBoxRandEnv2: Comparte las características de `PushBoxRandEnv` pero modifica la política del agente, penalizando cada vez que se mueve o se queda quieto, pero recompensando aún más cada vez que logre el objetivo.
