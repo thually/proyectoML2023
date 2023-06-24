@@ -5,7 +5,7 @@ import gymnasium as gym
 from gymnasium import spaces
 
 
-class GridWorldRandEnv2(gym.Env):
+class PushBoxRandEnv2(gym.Env):
     metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
 
     def __init__(self, render_mode=None, size=5, step_limit=None):
