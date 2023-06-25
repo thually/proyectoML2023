@@ -137,7 +137,7 @@ class PushBoxRandPol1Env(gym.Env):
         if terminated:
             reward = 100
         elif action == 4:
-            reward = -2
+            reward = 0
         else:
             reward = 1
         observation = self._get_obs()
