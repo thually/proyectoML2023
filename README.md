@@ -22,13 +22,13 @@ Los ambientes construidos son:
 
 ## PushBox
 
-1. Actualización en las importaciones, los módulos y los requerimientos del módulo: https://github.com/thually/proyectoML2023/commit/03437e009c3d394f4a79dea00dace97ee1f4d821
+1. Actualización en las importaciones, los módulos y los requerimientos del módulo: 03437e009c3d394f4a79dea00dace97ee1f4d821
 
-2. Cambios gráficos: https://github.com/thually/proyectoML2023/commit/224e7782bf74c35526ae7f7b8bc816a3e0370ae5, https://github.com/thually/proyectoML2023/commit/58b5b5a1a16844f157859644f6b0902f2a035dc1, https://github.com/thually/proyectoML2023/commit/2fee43ff3553375e5362721e950916c262c39c47, https://github.com/thually/proyectoML2023/commit/926fb903516f7e3e2e7231539c08c498f682e4c4.
+2. Cambios gráficos: 224e7782bf74c35526ae7f7b8bc816a3e0370ae5, 58b5b5a1a16844f157859644f6b0902f2a035dc1, 2fee43ff3553375e5362721e950916c262c39c47, 926fb903516f7e3e2e7231539c08c498f682e4c4.
 
-3. Modificación en la lógica del método reset: https://github.com/thually/proyectoML2023/commit/a0220b6a4512d80afea37797745cfd0005e9ad64, https://github.com/thually/proyectoML2023/commit/536644435dc3bb03812c94c30eab79aca4411a3e
+3. Modificación en la lógica del método reset: a0220b6a4512d80afea37797745cfd0005e9ad64, 536644435dc3bb03812c94c30eab79aca4411a3e
 
-4. Modificación en la lógica del método step: https://github.com/thually/proyectoML2023/commit/509e4257795fd9256db59a5150a6aa915ee71ce9, https://github.com/thually/proyectoML2023/commit/536644435dc3bb03812c94c30eab79aca4411a3e
+4. Modificación en la lógica del método step: 509e4257795fd9256db59a5150a6aa915ee71ce9, 536644435dc3bb03812c94c30eab79aca4411a3e
 
 
 
