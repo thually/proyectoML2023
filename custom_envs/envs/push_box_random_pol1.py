@@ -136,8 +136,6 @@ class PushBoxRandPol1Env(gym.Env):
         #reward = 1 if terminated else 0  # Binary sparse rewards
         if terminated:
             reward = 100
-        elif truncated:
-            reward = -10
         elif action == 4:
             reward = -2
         else:
