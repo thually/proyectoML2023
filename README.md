@@ -20,9 +20,11 @@ Los ambientes construidos son:
 
 # Changelog
 
-## PushBox
+A continuación dejamos el registro de cambios que se realizó sobre cada entorno del proyecto, a partir del fork original
 
-1. Actualización en las importaciones, los módulos y los requerimientos del módulo: 03437e0
+## PushBox (Entorno base)
+
+1. Actualización en las importaciones, los módulos y los requerimientos del módulo: thually/proyectoML2023@03437e0
 
 2. Cambios gráficos: 224e778, 58b5b5a, 2fee43f, 926fb90.
 
