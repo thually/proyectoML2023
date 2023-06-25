@@ -5,7 +5,7 @@ import gymnasium as gym
 from gymnasium import spaces
 
 
-class PushBoxRandEnv2(gym.Env):
+class PushBoxRandPol2Env(gym.Env):
     metadata = {"render_modes": ["human", "rgb_array"], "render_fps": 4}
 
     def __init__(self, render_mode=None, size=5, step_limit=None):
@@ -133,20 +133,15 @@ class PushBoxRandEnv2(gym.Env):
 
         # An episode is truncated iff the agent has reached the left border of the grid
         truncated = self._target_location[0] == 0
-
+        #reward = 1 if terminated else 0  # Binary sparse rewards
         if terminated:
-            # If target is in goal, we give a reward of 10
             reward = 100
+        elif truncated:
+            reward = 0
         elif action == 4:
-            # If the agent stays, we give a reward of -1
-            reward = -1
+            reward = 2
         else:
-            # if the agent moves, we give a reward of -2
-            reward = -2
-        
-        # A simpler reward function
-        # reward = 1 if terminated else 0
-
+            reward = -1
         observation = self._get_obs()
         info = self._get_info()
 

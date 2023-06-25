@@ -13,15 +13,13 @@ register(
 )
 
 register(
-     id="custom_envs/PushBoxRandom2",
-     entry_point="custom_envs.envs:PushBoxRand2Env",
-     max_episode_steps=300,
-)
-
-register(
      id="custom_envs/PushBoxRandPol1",
      entry_point="custom_envs.envs:PushBoxRandPol1Env",
      max_episode_steps=300,
 )
 
-from custom_envs.envs.push_box_random_pol1 import PushBoxRandPol1Env
+register(
+     id="custom_envs/PushBoxRandPol2",
+     entry_point="custom_envs.envs:PushBoxRandPol2Env",
+     max_episode_steps=300,
+)
