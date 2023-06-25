@@ -134,7 +134,9 @@ class PushBoxRandPol1Env(gym.Env):
         # An episode is truncated iff the agent has reached the left border of the grid
         truncated = self._target_location[0] == 0
         #reward = 1 if terminated else 0  # Binary sparse rewards
-        if action == 4:
+        if terminated:
+            reward = 1
+        elif action == 4:
             reward = 0
         else:
             reward = 1
