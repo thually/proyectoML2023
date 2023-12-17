@@ -1,4 +1,4 @@
-Este repositorio contiene todos los ambientes construidos y referenciados en el proyecto final del curso Machine Learning. Para implementar nuestros ecosistemas usamos como boilerplate el ejemplo usado en el repositorio [gym_examples](https://github.com/Farama-Foundation/gym-examples), decisión que nos facilitaba reutilizar los elementos gráficos de un entorno renderizado mediante pygame, para así dedicarnos principalmente a la implementación de la lógica de cada ambiente.
+Este repositorio contiene todos los ambientes construidos y referenciados en el proyecto final del curso "Machine Learning". Para implementar nuestros ecosistemas usamos como boilerplate el ejemplo del repositorio [gym_examples](https://github.com/Farama-Foundation/gym-examples), decisión que nos facilitaba reutilizar los elementos gráficos de un entorno renderizado mediante pygame, para así dedicarnos principalmente a la implementación de la lógica de cada ambiente.
 
 Los ambientes construidos son:
 
